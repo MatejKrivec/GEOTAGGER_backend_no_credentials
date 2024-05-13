@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Inject, Injectable, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "src/PRISMA/prisma.service";
 import { Prisma, USER } from "@prisma/client";
 import { PasswordService } from "./password.service";
@@ -90,6 +90,7 @@ export class UserService {
             data: { password: hashedPassword },
         });
     }
+
 
     async deleteUser(where: Prisma.USERWhereUniqueInput): Promise<USER> {
         return this.prisma.uSER.delete({

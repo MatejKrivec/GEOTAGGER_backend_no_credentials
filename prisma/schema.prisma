@@ -19,3 +19,10 @@ model USER{
   email String @unique
   password String
 }
+
+model PasswordResetToken {
+  id          Int      @default(autoincrement()) @id
+  token       String   
+  userId      Int      
+  expiryTime  DateTime
+}
