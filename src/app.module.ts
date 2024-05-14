@@ -5,6 +5,7 @@ import { UserModule } from './USER/user.module';
 import { AuthModule } from './JWT/auth.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { PasswordResetTokenModule } from './PassworResetToken/pres.module';
+import { AwsModule } from './AWS/aws.module';
 
 
 @Module({
@@ -12,6 +13,7 @@ import { PasswordResetTokenModule } from './PassworResetToken/pres.module';
     UserModule, 
     AuthModule,
     PasswordResetTokenModule,
+    AwsModule,
     MailerModule.forRoot({
       transport: {
         host: 'sandbox.smtp.mailtrap.io',

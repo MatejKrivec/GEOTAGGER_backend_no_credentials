@@ -56,7 +56,8 @@ export class UserService {
       return this.prisma.uSER.create({
           data: {
               ...data,
-              password: hashedPassword // Hash the password before saving
+              password: hashedPassword, // Hash the password before saving
+              profilePic: "https://geotagger.s3.eu-north-1.amazonaws.com/UserImages/default_user_pic.jpg"
           }
       });
     }

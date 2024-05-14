@@ -7,4 +7,7 @@ export class UpdateUserDto {
   @ApiProperty()
   email: string;
 
+  @ApiProperty()
+  profilePic: string;
+
 }

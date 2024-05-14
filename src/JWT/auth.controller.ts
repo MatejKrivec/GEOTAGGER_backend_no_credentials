@@ -19,7 +19,7 @@ export class AuthController {
     if (!user) {
       return { error: 'Invalid credentials' };
     }
-    const token = await this.authService.generateToken({ sub: user.id, aud: user.username});
+    const token = await this.authService.generateToken({ sub: user.id, aud: user.username, });
     return { token };
   }
 
