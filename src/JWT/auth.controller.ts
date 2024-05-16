@@ -29,4 +29,16 @@ export class AuthController {
 
     return { route: 'Home' };
   }
+
+  @Get('verify-token')
+  async verifyToken(@Request() req) {
+    const token = req.headers.authorization.split(' ')[1]; // Extract token from Authorization header
+
+    try {
+      const decodedToken = this.authService.verifyToken(token);
+      return { valid: true, decodedToken };
+    } catch (error) {
+      return { valid: false, error: error.message };
+    }
+  }
 }

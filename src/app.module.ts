@@ -3,9 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './USER/user.module';
 import { AuthModule } from './JWT/auth.module';
-import { MailerModule } from '@nestjs-modules/mailer';
 import { PasswordResetTokenModule } from './PassworResetToken/pres.module';
 import { AwsModule } from './AWS/aws.module';
+import { OAuthModule } from './OAuthGoogle/OAuth.module';
 
 
 @Module({
@@ -14,16 +14,7 @@ import { AwsModule } from './AWS/aws.module';
     AuthModule,
     PasswordResetTokenModule,
     AwsModule,
-    MailerModule.forRoot({
-      transport: {
-        host: 'sandbox.smtp.mailtrap.io',
-        port: 2525,
-        auth: {
-          user: 'matej krivec',
-          pass: 'mailtrap321', // replace with your Mailtrap password
-        },
-      },
-    }),
+    OAuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

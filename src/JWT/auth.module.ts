@@ -18,6 +18,6 @@ import { PasswordService } from 'src/USER/password.service';
   ],
   providers: [AuthService, JwtStrategy, PrismaService, PasswordService],
   controllers: [AuthController, DecodeController],
-  exports: [AuthService],
+  
 })
 export class AuthModule {}

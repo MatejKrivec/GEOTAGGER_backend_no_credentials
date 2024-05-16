@@ -17,7 +17,7 @@ model USER{
   id Int @default(autoincrement()) @id
   username String @unique
   email String @unique
-  password String
+  password String?
   profilePic  String?
 }
 
