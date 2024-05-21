@@ -23,15 +23,15 @@ export class UserService {
       });
 
       if (!user) {
-          return null; // User not found
+          return null; 
       }
 
       const isPasswordValid = await this.passwordService.comparePassword(password, user.password);
 
       if (isPasswordValid) {
-          return user; // Password is valid
+          return user; 
       } else {
-          return null; // Password is invalid
+          return null; 
       }
   }
 
@@ -41,8 +41,6 @@ export class UserService {
 
   async validatePassword(id: number, currentPassword: string): Promise<boolean> {
     const user = await this.prisma.uSER.findUnique({ where: { id } });
-    //console.log(user)
-    //console.log("current password: "+ currentPassword)
     if (!user) {
       console.error('User not found');
       return false;
@@ -56,22 +54,11 @@ export class UserService {
       return this.prisma.uSER.create({
           data: {
               ...data,
-              password: hashedPassword, // Hash the password before saving
+              password: hashedPassword, 
               profilePic: "https://geotagger.s3.eu-north-1.amazonaws.com/UserImages/default_user_pic.jpg"
           }
       });
     }
-
-    /*async updateUser(params: {
-        where: Prisma.USERWhereUniqueInput;
-        data: Prisma.USERUpdateInput;
-    }): Promise<USER> {
-        const { where, data } = params;
-        return this.prisma.uSER.update({
-            data,
-            where,
-        });
-    }*/
 
     async posodobitevUser(params: {
         where: Prisma.USERWhereUniqueInput;

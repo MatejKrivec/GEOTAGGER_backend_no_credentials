@@ -62,19 +62,6 @@ export class UserController {
     });
     }
 
-    /*@Patch('updatePassword:id') 
-    @ApiCreatedResponse({ description: 'The user has been successfully updated.' })
-    @ApiBody({ type: ValidatePasswordDto })
-        async posodobitevPassworda(
-            @Param('id') id: string,
-            @Body() userData: USER,
-        ): Promise<USER> {
-        return this.userService.posodobitevUser({
-        where: { id: Number(id) },
-        data: userData,
-    });
-    }*/
-
     @Patch('updatePassword/:id') 
     @ApiCreatedResponse({ description: 'The password has been successfully updated.' })
     async updatePassword(

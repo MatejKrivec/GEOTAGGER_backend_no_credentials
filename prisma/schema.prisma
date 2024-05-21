@@ -14,11 +14,12 @@ datasource db {
 }
 
 model USER{
-  id Int @default(autoincrement()) @id
-  username String @unique
-  email String @unique
-  password String?
-  profilePic  String?
+  id            Int @default(autoincrement()) @id
+  username      String @unique
+  email         String @unique
+  password      String?
+  profilePic    String?
+  points        Int @default(10)
 }
 
 model PasswordResetToken {
@@ -26,4 +27,22 @@ model PasswordResetToken {
   token       String   
   userId      Int      
   expiryTime  DateTime
+}
+
+model Location {
+  id         Int     @default(autoincrement()) @id
+  userID     Int
+  name       String
+  location   String
+  photo      String
+  date  DateTime
+}
+
+model Guess {
+  id              Int     @default(autoincrement()) @id
+  UserID          Int
+  LocationID      Int
+  guessedLocation String
+  distance        Float
+  date  DateTime
 }

@@ -11,7 +11,6 @@ export class PasswordService {
   }
 
   async comparePassword(plainPassword: string, hashedPassword: string): Promise<boolean> {
-    //console.log("password == " + plainPassword + "  pasword hash == " + hashedPassword )
     return bcrypt.compare(plainPassword, hashedPassword);
   }
 

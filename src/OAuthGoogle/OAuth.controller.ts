@@ -3,8 +3,9 @@ import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from 'src/JWT/auth.service';
 import { OAuthService } from './OAuth.service';
+import { ApiTags } from '@nestjs/swagger';
 
-
+@ApiTags('GoogleAuth')
 @Controller('Oauth')
 export class OAuthController {
     constructor(private readonly authService: OAuthService) {}

@@ -6,6 +6,8 @@ import { AuthModule } from './JWT/auth.module';
 import { PasswordResetTokenModule } from './PassworResetToken/pres.module';
 import { AwsModule } from './AWS/aws.module';
 import { OAuthModule } from './OAuthGoogle/OAuth.module';
+import { LocationModule } from './LOCATION/location.module';
+import { GuessModule } from './GUESS/guess.module';
 
 
 @Module({
@@ -15,6 +17,8 @@ import { OAuthModule } from './OAuthGoogle/OAuth.module';
     PasswordResetTokenModule,
     AwsModule,
     OAuthModule,
+    LocationModule,
+    GuessModule
   ],
   controllers: [AppController],
   providers: [AppService],
