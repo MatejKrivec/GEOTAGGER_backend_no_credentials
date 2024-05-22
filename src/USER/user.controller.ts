@@ -13,11 +13,9 @@ export class UserController {
     constructor(private readonly userService: UserService) {}
 
     @Get('login') 
-    async login(@Query('username') username: string,@Query('password') password: string): Promise<USER | null> {
-
-    const user = await this.userService.findOneByUsernameAndPassword(username, password);
-
-    return user;
+        async login(@Query('username') username: string,@Query('password') password: string): Promise<USER | null> {
+        const user = await this.userService.findOneByUsernameAndPassword(username, password);
+        return user;
     }
 
     @Get(':id')
@@ -72,6 +70,18 @@ export class UserController {
         const newPassword = validatePasswordDto.password;
         await this.userService.updatePassword(userId, newPassword);
     }
+
+    @Patch('updateUserPoints/:id')
+    updateUserPoints(@Param('id') id: string, @Body() data: { points: number }): Promise<void> {
+        return this.userService.updateUserPoints(id, data.points);
+    }
+
+    @Patch('addUserPoints/:id')
+    addUserPoints(@Param('id') id: string, @Body() data: { points: number }): Promise<void> {
+        return this.userService.uaddUserPoints(id, data.points);
+    }
+
+    
 
     @Delete(':id')
         async deleteUser(@Param('id') id: string): Promise<USER> {

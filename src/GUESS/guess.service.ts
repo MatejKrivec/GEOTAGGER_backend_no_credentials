@@ -1,18 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/PRISMA/prisma.service';
 import { Guess } from '@prisma/client';
-import { DateTime } from 'aws-sdk/clients/devicefarm';
+import { CreateGuessDto } from './createGuess.dto';
 
 @Injectable()
 export class GuessService {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: { UserID: number; LocationID: number; guessedLocation: string; distance: number; date: Date }): Promise<Guess> {
+  
+  async create(data: CreateGuessDto): Promise<Guess> {
     return this.prisma.guess.create({ data });
   }
 
   async findAll(): Promise<Guess[]> {
     return this.prisma.guess.findMany();
+  }
+
+  async findByLocation(id: number): Promise<Guess[]> {
+    return this.prisma.guess.findMany({ where: { LocationID: id } });
+  }
+
+  async findByUser(id: number): Promise<Guess[]> {
+    return this.prisma.guess.findMany({ where: { UserID: id } });
   }
 
   async findOne(id: number): Promise<Guess> {
@@ -25,5 +34,14 @@ export class GuessService {
 
   async remove(id: number): Promise<Guess> {
     return this.prisma.guess.delete({ where: { id } });
+  }
+
+  async countGuesses(userId: number, locationId: number): Promise<number> {
+    return this.prisma.guess.count({
+      where: {
+        UserID: userId,
+        LocationID: locationId,
+      },
+    });
   }
 }

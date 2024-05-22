@@ -79,6 +79,43 @@ export class UserService {
         });
     }
 
+    async updateUserPoints(id: string, points: number): Promise<void> {
+      const userId = parseInt(id);
+      const user = await this.prisma.uSER.findUnique({
+        where: {
+          id: userId,
+        },
+      });
+    
+      if (user) {
+        let calculatedPoints = user.points - points;
+        if (calculatedPoints <= 0) {
+          calculatedPoints = 0;
+        }
+    
+        await this.prisma.uSER.update({
+          where: { id: userId },
+          data: { points: calculatedPoints },
+        });
+      } else {
+        throw new Error('User not found');
+      }
+    }
+
+    async uaddUserPoints(id: string, points: number): Promise<void> {
+      const userId = parseInt(id);
+      const user = await this.prisma.uSER.findUnique({
+        where: {
+          id: userId,
+        },
+      });
+    
+        await this.prisma.uSER.update({
+          where: { id: userId },
+          data: { points: user.points + points },
+        });
+    }
+
 
     async deleteUser(where: Prisma.USERWhereUniqueInput): Promise<USER> {
         return this.prisma.uSER.delete({
