@@ -8,6 +8,8 @@ import { AwsModule } from './AWS/aws.module';
 import { OAuthModule } from './OAuthGoogle/OAuth.module';
 import { LocationModule } from './LOCATION/location.module';
 import { GuessModule } from './GUESS/guess.module';
+import { UserActivityModule } from './UserActivity/userActivity.module';
+
 
 
 @Module({
@@ -18,7 +20,8 @@ import { GuessModule } from './GUESS/guess.module';
     AwsModule,
     OAuthModule,
     LocationModule,
-    GuessModule
+    GuessModule,
+    UserActivityModule
   ],
   controllers: [AppController],
   providers: [AppService],

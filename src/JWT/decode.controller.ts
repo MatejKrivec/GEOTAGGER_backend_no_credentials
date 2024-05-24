@@ -15,10 +15,8 @@ export class DecodeController {
       }
       const decoded = this.authService.verifyToken(token) as JwtPayload;
       return {
-        id: decoded.sub,
+        id: decoded.sud,
         username: decoded.aud,
-        
-
       };
     } catch (error) {
       return { error: 'Invalid token' };

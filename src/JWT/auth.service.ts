@@ -20,6 +20,7 @@ export class AuthService {
       throw new Error('Invalid token');
     }
   }
+  
   constructor(
     private jwtService: JwtService,
     private prisma: PrismaService,
@@ -37,13 +38,13 @@ async findOneByUsernameAndPassword(email: string, password: string): Promise<USE
     });
 
     if (!user) {
-      return null; // User not found
+      return null; 
     }
 
     const isPasswordValid = await this.passwordService.comparePassword(password, user.password);
 
     if (!isPasswordValid) {
-      return null; // Invalid password
+      return null; 
     }
 
     return user;

@@ -20,6 +20,7 @@ model USER{
   password      String?
   profilePic    String?
   points        Int @default(10)
+  role          String @default("user")
 }
 
 model PasswordResetToken {
@@ -45,4 +46,14 @@ model Guess {
   guessedLocation String
   distance        Float
   date  DateTime
+}
+
+model UserActivity {
+  id            Int       @id @default(autoincrement())
+  userId        Int
+  action        String
+  componentType String
+  newValue      String?
+  location      String
+  createdAt     DateTime  
 }
