@@ -18,12 +18,9 @@ export class OAuthController {
   @Get('google/callback')
   @UseGuards(AuthGuard('google'))
   async googleLoginCallback(@Req() req, @Res() res) {
-    //console.log(req.user)
 
-    const token = await this.authService.generateToken({ sub: req.user.id, aud: req.user.username, });
-
-    //console.log("redirectingggggggg")
-
+    const token = await this.authService.generateToken({ sud: req.user.id, aud: req.user.username, });
+  
     res.redirect(`http://localhost:5173/Signin?token=${token}`);
   }
 }

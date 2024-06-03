@@ -2,6 +2,7 @@ import { Body, Controller, Get, Headers, HttpException, HttpStatus, Post } from 
 import { JwtService } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 import { JwtPayload } from 'jsonwebtoken';
+import { decode } from 'punycode';
 
 @Controller('decode')
 export class DecodeController {
@@ -14,6 +15,7 @@ export class DecodeController {
         throw new HttpException('Token not provided', HttpStatus.BAD_REQUEST);
       }
       const decoded = this.authService.verifyToken(token) as JwtPayload;
+
       return {
         id: decoded.sud,
         username: decoded.aud,
