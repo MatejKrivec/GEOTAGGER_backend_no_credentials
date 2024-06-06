@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { LocationService } from './location.service';
 import { Location } from '@prisma/client';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { CreateLocationDto } from './createLocation.dto';
+import { JwtAuthGuard } from 'src/JWT/jwt-auth.guard';
 
 
 @ApiTags('Locations')
@@ -11,6 +12,7 @@ export class LocationController {
   constructor(private readonly locationService: LocationService) {}
 
   @Post()
+  @UseGuards(JwtAuthGuard) 
   @ApiBody({ type: CreateLocationDto})
   async create(@Body() createLocationDto: CreateLocationDto): Promise<Location> {
     return this.locationService.create(createLocationDto);
@@ -37,11 +39,13 @@ export class LocationController {
   }
 
   @Patch(':id')
+  @UseGuards(JwtAuthGuard) 
   update(@Param('id') id: string, @Body() data: { name?: string; location?: string; photo?: string }): Promise<Location> {
     return this.locationService.update(+id, data);
   }
 
   @Delete(':id')
+  @UseGuards(JwtAuthGuard) 
   remove(@Param('id') id: string): Promise<Location> {
     return this.locationService.remove(+id);
   }

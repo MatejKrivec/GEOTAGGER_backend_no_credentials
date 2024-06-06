@@ -1,10 +1,11 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, HttpException, HttpStatus, Query, Patch } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, HttpException, HttpStatus, Query, Patch, UseGuards } from '@nestjs/common';
 import { UserService } from "./user.service";
 import { Prisma, USER } from "@prisma/client";
 import { ApiBody, ApiCreatedResponse, ApiProperty, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from './user.dto';
 import { ValidatePasswordDto } from './validatePassword.dto';
 import { UpdateUserDto } from './updateUser.dto';
+import { JwtAuthGuard } from 'src/JWT/jwt-auth.guard';
 
 
 @ApiTags('Users')
@@ -19,7 +20,7 @@ export class UserController {
     }
 
     @Get(':id')
-        async getUser(@Param('id') ID: string): Promise<USER> {
+    async getUser(@Param('id') ID: string): Promise<USER> {
         const id = parseInt(ID, 10);
         return this.userService.getUserById(id);
     }
@@ -48,6 +49,7 @@ export class UserController {
     }
 
     @Patch(':id') 
+    @UseGuards(JwtAuthGuard) 
     @ApiCreatedResponse({ description: 'The user has been successfully updated.' })
     @ApiBody({ type: UpdateUserDto })
         async posodobitevUser(
