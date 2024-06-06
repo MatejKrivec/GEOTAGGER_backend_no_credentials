@@ -24,13 +24,6 @@ export class AuthController {
     return { token };
   }
 
- /*@Get('protected')
-  @UseGuards(AuthGuard('jwt'))
-  protectedRoute() {
-
-    return { route: 'Home' };
-  }*/
-
   @Get('protected')
   async protectedRoute(@Req() req) {
     const authHeader = req.headers.authorization;

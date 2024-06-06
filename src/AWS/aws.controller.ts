@@ -11,7 +11,7 @@ export class AwsController {
 
   @Post('upload-profile-pic')
   @UseInterceptors(FileInterceptor('profilePic'))
-  async uploadProfilePic(@UploadedFile() file: MulterFile, @Body('userId') userId: string, @Body('key') key: string) { // Adjust the type declaration
+  async uploadProfilePic(@UploadedFile() file: MulterFile, @Body('userId') userId: string, @Body('key') key: string) { 
     try {
       if (!file) {
         throw new Error('No file uploaded');
@@ -31,7 +31,7 @@ export class AwsController {
 
   @Post('upload-location-pic')
   @UseInterceptors(FileInterceptor('profilePic'))
-  async uploadLocationPic(@UploadedFile() file: MulterFile, @Body('locationID') locationID: string, @Body('key') key: string) { // Adjust the type declaration
+  async uploadLocationPic(@UploadedFile() file: MulterFile, @Body('locationID') locationID: string, @Body('key') key: string) { 
     try {
       if (!file) {
         throw new Error('No file uploaded');
@@ -53,7 +53,6 @@ export class AwsController {
   async remove(@Param('id') id: string, @Body('key') key: string) {
     try {
       console.log("id:" + id + " photo:" +key)
-      // Call your service method to delete the location picture
       await this.awsService.deleteLocationPic(id,key);
       return { message: 'Location picture deleted successfully' };
     } catch (error) {

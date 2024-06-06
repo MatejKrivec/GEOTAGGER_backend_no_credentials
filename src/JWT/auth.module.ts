@@ -12,7 +12,7 @@ import { PasswordService } from 'src/USER/password.service';
 @Module({
   imports: [
     JwtModule.register({
-      secret: '12345', 
+      secret: process.env.JWT_TOKEN_SECRET_KEY, 
       signOptions: { expiresIn: '1h' }, 
     }),
   ],

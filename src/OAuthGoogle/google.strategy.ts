@@ -20,7 +20,6 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   async validate(accessToken: string, refreshToken: string, profile: any): Promise<any> {
     const { displayName, emails, photos } = profile;
 
-    // Check if the user with the provided email already exists in your database
     const existingUser = await this.prisma.uSER.findUnique({
         where: {
             email: emails[0].value,
@@ -28,20 +27,18 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     });
 
     if (existingUser) {
-        // If the user already exists, return the existing user profile
         return existingUser;
     } else {
         
         const newUser = await this.prisma.uSER.create({
             data: {
-                username: displayName, // You can set username as displayName or whatever suits your logic
+                username: displayName, 
                 email: emails[0].value,
                 password: null,
                 profilePic: "https://geotagger.s3.eu-north-1.amazonaws.com/UserImages/default_user_pic.jpg"
             },
         });
         
-        // Return the newly created user profile
         return newUser;
     }
 }

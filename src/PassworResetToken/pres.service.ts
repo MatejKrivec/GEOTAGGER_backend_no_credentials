@@ -20,7 +20,7 @@ export class PasswordResetService {
     await this.prisma.passwordResetToken.create({
       data: {
         token: resetToken,
-        expiryTime: new Date(Date.now() + 3600000), // 1 hour expiry
+        expiryTime: new Date(Date.now() + 3600000), 
         userId: user.id,
       },
     });
@@ -34,7 +34,6 @@ export class PasswordResetService {
       throw new NotFoundException('Token not found');
     }
 
-    // Check token expiry
     if (resetToken.expiryTime < new Date()) {
       throw new Error('Token expired');
     }
@@ -43,8 +42,8 @@ export class PasswordResetService {
 
   async create(createPasswordResetTokenDto: CreatePasswordResetTokenDto): Promise<void> {
     const { userId } = createPasswordResetTokenDto;
-    const expiryTime = new Date(Date.now() + 30 * 60 * 1000); // 30 minutes from now
-    const token = '123456';
+    const expiryTime = new Date(Date.now() + 30 * 60 * 1000); 
+    const token = '123456';   //TUKAJ BI BIL NEKI RANDOM GENERATED NUMBER
     await this.prisma.passwordResetToken.create({
       data: {
         userId,
@@ -54,25 +53,5 @@ export class PasswordResetService {
     });
   }
 
- /* private async sendResetEmail(email: string, resetToken: string): Promise<void> {
-    const templateParams = {
-      to_email: email,
-      reset_token: resetToken,
-    };
 
-    const emailJsParams = {
-      service_id: 'service_i9xgff5',
-      template_id: 'template_4bxr3mo',
-      user_id: '_KPuJB7RzCni2V7la',
-      template_params: templateParams,
-    };
-
-    try {
-      await axios.default.post('https://api.emailjs.com/api/v1.0/email/send', emailJsParams);
-      console.log("Reset email sent successfully.");
-    } catch (error) {
-      console.error("Error sending reset email:", error.response?.data?.error);
-      throw new Error('Error sending reset email');
-    }
-  }*/
 }
