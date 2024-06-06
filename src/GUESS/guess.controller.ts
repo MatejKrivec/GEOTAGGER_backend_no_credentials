@@ -11,7 +11,7 @@ export class GuessController {
 
   @Post()
   @ApiBody({type: CreateGuessDto })
-  create(@Body() data: Guess): Promise<Guess> {
+  create(@Body() data: CreateGuessDto): Promise<Guess> {
     return this.guessService.create(data);
   }
 

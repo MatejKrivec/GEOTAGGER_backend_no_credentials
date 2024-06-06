@@ -12,8 +12,8 @@ export class LocationController {
 
   @Post()
   @ApiBody({ type: CreateLocationDto})
-  create(@Body() data: Location): Promise<Location> {
-    return this.locationService.create(data);
+  async create(@Body() createLocationDto: CreateLocationDto): Promise<Location> {
+    return this.locationService.create(createLocationDto);
   }
 
   @Get()

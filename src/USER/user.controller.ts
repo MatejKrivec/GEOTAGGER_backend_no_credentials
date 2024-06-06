@@ -81,8 +81,6 @@ export class UserController {
         return this.userService.uaddUserPoints(id, data.points);
     }
 
-    
-
     @Delete(':id')
         async deleteUser(@Param('id') id: string): Promise<USER> {
         return this.userService.deleteUser({ id: Number(id) });

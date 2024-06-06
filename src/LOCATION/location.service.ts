@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/PRISMA/prisma.service';
+//import { PrismaService } from 'src/PRISMA/prisma.service';
+import { PrismaService } from '../PRISMA/prisma.service';
+
 import { Prisma, Location } from "@prisma/client";
 import { DateTime } from 'aws-sdk/clients/devicefarm';
 

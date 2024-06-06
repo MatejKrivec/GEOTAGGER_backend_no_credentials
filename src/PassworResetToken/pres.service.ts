@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { PrismaService } from 'src/PRISMA/prisma.service';
+import { PrismaService } from '../PRISMA/prisma.service';
 import * as axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import emailjs from 'emailjs-com';
