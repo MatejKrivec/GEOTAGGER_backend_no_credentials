@@ -3,7 +3,7 @@ import { GuessService } from './guess.service';
 import { Guess } from '@prisma/client';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { CreateGuessDto } from './createGuess.dto';
-import { JwtAuthGuard } from 'src/JWT/jwt-auth.guard';
+import { JwtAuthGuard } from '../JWT/jwt-auth.guard';
 
 @ApiTags('Guess')
 @Controller('guesses')

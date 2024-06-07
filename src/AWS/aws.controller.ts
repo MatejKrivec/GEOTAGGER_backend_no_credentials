@@ -3,7 +3,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { AwsService } from './aws.service';
 import { MulterFile } from 'multer'; // Adjust the import statement
 import { ApiTags } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/JWT/jwt-auth.guard';
+import { JwtAuthGuard } from '../JWT/jwt-auth.guard';
 
 @ApiTags('AWS')
 @Controller('aws')

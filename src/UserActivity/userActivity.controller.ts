@@ -2,7 +2,7 @@ import { Controller, Post, Body, Get, UseGuards } from '@nestjs/common';
 import { UserActivityService } from './userActivity.service';
 import { Prisma } from '@prisma/client';
 import { ApiTags } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/JWT/jwt-auth.guard';
+import { JwtAuthGuard } from '../JWT/jwt-auth.guard';
 
 @ApiTags('User_Activity')
 @Controller('user-activity')

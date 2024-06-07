@@ -4,12 +4,16 @@ import { PasswordResetService } from './pres.service';
 import { EmailDto } from './email.dto';
 import { TokenDto } from './token.dto';
 import { CreatePasswordResetTokenDto } from './createToken.dto';
+import { UserService } from 'src/USER/user.service';
 
 @ApiTags('ResetPassword')
 @Controller('ResetPassword')
 export class PasswordResetController {
 
-    constructor(private readonly passwordResetService: PasswordResetService) {}
+  constructor(
+    private readonly passwordResetService: PasswordResetService,
+    private readonly userService: UserService
+  ) {}
 
     @Post('/request')
     @ApiBody({ type: EmailDto })
@@ -17,11 +21,28 @@ export class PasswordResetController {
       return await this.passwordResetService.requestPasswordReset(email);
     }
 
-    @Post('/validate-token')
+   /* @Post('/validate-token')
     @ApiBody({ type: TokenDto })
     async validateToken(@Body() body: { token: string }): Promise<{ userId: string }> {
       const token = body.token;
       return await this.passwordResetService.validateToken(token);
+    }*/
+
+     @Post('/validate-token')
+    @ApiBody({ type: TokenDto })
+    async validateToken(@Body() body: { token: string; newPassword: string }): Promise<{ userId: string }> {
+        const token = body.token;
+        const newPassword = body.newPassword;
+
+        const { userId } = await this.passwordResetService.validateToken(token);
+
+        if (userId) {
+            // Update the password using the newPassword parameter
+            const id = parseInt(userId);
+            await this.userService.updatePassword(id, newPassword);
+        }
+
+        return { userId };
     }
 
 

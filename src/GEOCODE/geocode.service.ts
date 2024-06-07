@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class GeocodeService {
-  private readonly apiKey = process.env.GOOGLE_MAPS_API_KEY; // Store your API key in an environment variable
+  private readonly apiKey = process.env.GOOGLE_MAPS_API_KEY; 
 
   constructor(private httpService: HttpService) {}
 

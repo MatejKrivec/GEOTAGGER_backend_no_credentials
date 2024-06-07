@@ -3,7 +3,7 @@ import { LocationService } from './location.service';
 import { Location } from '@prisma/client';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { CreateLocationDto } from './createLocation.dto';
-import { JwtAuthGuard } from 'src/JWT/jwt-auth.guard';
+import { JwtAuthGuard } from '../JWT/jwt-auth.guard';
 
 
 @ApiTags('Locations')
