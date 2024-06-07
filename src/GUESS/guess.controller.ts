@@ -28,6 +28,7 @@ export class GuessController {
   }
 
   @Get('user/:id')
+  @UseGuards(JwtAuthGuard) 
   findByUser(@Param('id') id: string): Promise<Guess[]> {
     return this.guessService.findByUser(parseInt(id));
   }
@@ -38,6 +39,7 @@ export class GuessController {
   }
 
   @Get('count/:userId/:locationId')
+  @UseGuards(JwtAuthGuard) 
   countGuesses(@Param('userId') userId: string, @Param('locationId') locationId: string): Promise<number> {
     return this.guessService.countGuesses(parseInt(userId), parseInt(locationId));
   }

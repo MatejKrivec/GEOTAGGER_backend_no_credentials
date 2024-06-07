@@ -16,6 +16,7 @@ export class UserActivityController {
   }
 
   @Get('latest')
+  @UseGuards(JwtAuthGuard) 
   async getLatestActivities() {
     return this.userActivityService.getLatestActivities();
   }

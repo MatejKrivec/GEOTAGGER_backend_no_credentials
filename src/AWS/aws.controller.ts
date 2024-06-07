@@ -19,8 +19,6 @@ export class AwsController {
         throw new Error('No file uploaded');
       }
 
-
-      console.log('users idddddddddddddddddddddddddddddddddd: '+ userId)
       const imageUrl = await this.awsService.uploadProfilePic(file, key);
 
       await this.awsService.deleteProfilePic(userId, key);
@@ -75,7 +73,7 @@ export class AwsController {
   @UseGuards(JwtAuthGuard)
   async remove(@Param('id') id: string, @Body('key') key: string) {
     try {
-      console.log("id:" + id + " photo:" +key)
+    //  console.log("id:" + id + " photo:" +key)
       await this.awsService.deleteLocationPic(id,key);
       return { message: 'Location picture deleted successfully' };
     } catch (error) {

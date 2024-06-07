@@ -5,7 +5,7 @@ import { ApiBody, ApiCreatedResponse, ApiProperty, ApiTags } from '@nestjs/swagg
 import { CreateUserDto } from './user.dto';
 import { ValidatePasswordDto } from './validatePassword.dto';
 import { UpdateUserDto } from './updateUser.dto';
-import { JwtAuthGuard } from 'src/JWT/jwt-auth.guard';
+import { JwtAuthGuard } from '../JWT/jwt-auth.guard';
 
 
 @ApiTags('Users')
@@ -20,6 +20,7 @@ export class UserController {
     }
 
     @Get(':id')
+    @UseGuards(JwtAuthGuard) 
     async getUser(@Param('id') ID: string): Promise<USER> {
         const id = parseInt(ID, 10);
         return this.userService.getUserById(id);
@@ -31,6 +32,7 @@ export class UserController {
     }
 
     @Post('validatePassword/:id')
+    @UseGuards(JwtAuthGuard) 
     async validatePassword(
         @Param('id') id: string,
         @Body() validatePasswordDto: ValidatePasswordDto,
@@ -74,11 +76,13 @@ export class UserController {
     }
 
     @Patch('updateUserPoints/:id')
+    @UseGuards(JwtAuthGuard) 
     updateUserPoints(@Param('id') id: string, @Body() data: { points: number }): Promise<void> {
         return this.userService.updateUserPoints(id, data.points);
     }
 
     @Patch('addUserPoints/:id')
+    @UseGuards(JwtAuthGuard) 
     addUserPoints(@Param('id') id: string, @Body() data: { points: number }): Promise<void> {
         return this.userService.uaddUserPoints(id, data.points);
     }

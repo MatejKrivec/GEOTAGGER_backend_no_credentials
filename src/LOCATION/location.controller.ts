@@ -24,16 +24,19 @@ export class LocationController {
   }
 
   @Get(':id')
+  @UseGuards(JwtAuthGuard) 
   findOne(@Param('id') id: string): Promise<Location> {
     return this.locationService.findOne(+id);
   }
 
   @Get('other/:id')
+  @UseGuards(JwtAuthGuard) 
   findLocations(@Param('id') id: string): Promise<Location[]> {
     return this.locationService.findLocations(+id);
   }
 
   @Get('user/:id')
+  @UseGuards(JwtAuthGuard) 
   findUserLocations(@Param('id') id: string): Promise<Location[]> {
     return this.locationService.findUserLocations(+id);
   }
