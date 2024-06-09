@@ -64,7 +64,8 @@ export class UserController {
     });
     }
 
-   /* @Patch('updatePassword/:id') 
+    @Patch('updatePassword/:id') 
+    @UseGuards(JwtAuthGuard) 
     @ApiCreatedResponse({ description: 'The password has been successfully updated.' })
     async updatePassword(
         @Param('id') id: string,
@@ -73,7 +74,7 @@ export class UserController {
         const userId = parseInt(id, 10);
         const newPassword = validatePasswordDto.password;
         await this.userService.updatePassword(userId, newPassword);
-    }*/
+    }
 
     @Patch('updateUserPoints/:id')
     @UseGuards(JwtAuthGuard) 

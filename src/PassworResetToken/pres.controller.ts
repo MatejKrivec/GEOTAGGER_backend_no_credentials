@@ -4,7 +4,7 @@ import { PasswordResetService } from './pres.service';
 import { EmailDto } from './email.dto';
 import { TokenDto } from './token.dto';
 import { CreatePasswordResetTokenDto } from './createToken.dto';
-import { UserService } from 'src/USER/user.service';
+import { UserService } from '../USER/user.service';
 
 @ApiTags('ResetPassword')
 @Controller('ResetPassword')
@@ -20,13 +20,6 @@ export class PasswordResetController {
     async requestPasswordReset(@Body('email') email: string): Promise<{ resetToken: string; userId: string }> {
       return await this.passwordResetService.requestPasswordReset(email);
     }
-
-   /* @Post('/validate-token')
-    @ApiBody({ type: TokenDto })
-    async validateToken(@Body() body: { token: string }): Promise<{ userId: string }> {
-      const token = body.token;
-      return await this.passwordResetService.validateToken(token);
-    }*/
 
      @Post('/validate-token')
     @ApiBody({ type: TokenDto })
@@ -44,7 +37,6 @@ export class PasswordResetController {
 
         return { userId };
     }
-
 
     @Post()
     async create(@Body() createPasswordResetTokenDto: CreatePasswordResetTokenDto) {
