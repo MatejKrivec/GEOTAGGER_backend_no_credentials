@@ -8,6 +8,7 @@ import { PrismaService } from 'src/Prisma/prisma.service';
 import { DecodeController } from './decode.controller';
 import { PasswordService } from 'src/USER/password.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
+import { JwtService } from '@nestjs/jwt';
 
 
 @Module({

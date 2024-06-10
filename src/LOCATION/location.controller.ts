@@ -18,10 +18,10 @@ export class LocationController {
     return this.locationService.create(createLocationDto);
   }
 
-  @Get()
+  /*@Get()
   findAll(): Promise<Location[]> {
     return this.locationService.findAll();
-  }
+  }*/
 
   @Get(':id')
   @UseGuards(JwtAuthGuard) 

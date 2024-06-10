@@ -47,26 +47,6 @@ describe('GuessController', () => {
     });
   });
 
-  describe('findAll', () => {
-    it('should return all guesses', async () => {
-      const expectedResult = [
-        { 
-          id: 1, 
-          UserID: 1, 
-          LocationID: 1, 
-          guessedLocation: 'Test Location', 
-          distance: 10.5, 
-          date: new Date() 
-        }
-      ];
-      jest.spyOn(service, 'findAll').mockResolvedValue(expectedResult);
-
-      const result = await controller.findAll();
-
-      expect(result).toEqual(expectedResult);
-      expect(service.findAll).toHaveBeenCalled();
-    });
-  });
 
   describe('findOne', () => {
     it('should return a single guess', async () => {

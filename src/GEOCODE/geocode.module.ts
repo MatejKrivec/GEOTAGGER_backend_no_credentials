@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+/*import { Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
 import { GeocodeController } from './geocode.controller';
 import { GeocodeService } from './geocode.service';
@@ -9,3 +9,4 @@ import { GeocodeService } from './geocode.service';
   providers: [GeocodeService],
 })
 export class GeocodeModule {}
+*/

@@ -5,6 +5,7 @@ import { AuthService } from './auth.service';
 import { ApiBody, ApiCreatedResponse, ApiProperty, ApiTags } from '@nestjs/swagger';
 import { LoginDto } from './login.dto';
 import { JwtPayload } from 'jsonwebtoken';
+import { JwtService } from '@nestjs/jwt';
 
 @ApiTags('JWT')
 @Controller('auth')
@@ -51,7 +52,7 @@ export class AuthController {
 
   @Get('verify-token')
   async verifyToken(@Request() req) {
-    const token = req.headers.authorization.split(' ')[1]; // Extract token from Authorization header
+    const token = req.headers.authorization.split(' ')[1]; 
 
     try {
       const decodedToken = this.authService.verifyToken(token);

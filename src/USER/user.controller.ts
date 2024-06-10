@@ -26,10 +26,10 @@ export class UserController {
         return this.userService.getUserById(id);
     }
 
-    @Get()
+  /*  @Get()
         async getAllUsers(): Promise<USER[]> {
         return this.userService.getAllUsers();
-    }
+    }*/
 
     @Post('validatePassword/:id')
     @UseGuards(JwtAuthGuard) 
@@ -88,8 +88,8 @@ export class UserController {
         return this.userService.uaddUserPoints(id, data.points);
     }
 
-    @Delete(':id')
+  /*  @Delete(':id')
         async deleteUser(@Param('id') id: string): Promise<USER> {
         return this.userService.deleteUser({ id: Number(id) });
-    }
+    }*/
 }

@@ -59,13 +59,7 @@ describe('UserController', () => {
     });
   });
 
-  describe('getAllUsers', () => {
-    it('should return an array of users', async () => {
-      const result = await controller.getAllUsers();
-      expect(result).toEqual([]);
-      expect(service.getAllUsers).toHaveBeenCalled();
-    });
-  });
+
 
   describe('validatePassword', () => {
     it('should validate the user password', async () => {
@@ -130,12 +124,5 @@ describe('UserController', () => {
     });
   });
 
-  describe('deleteUser', () => {
-    it('should delete a user', async () => {
-      const id = '1';
-      const result = await controller.deleteUser(id);
-      expect(result).toEqual(expect.objectContaining({ id: parseInt(id, 10) }));
-      expect(service.deleteUser).toHaveBeenCalledWith({ id: Number(id) });
-    });
-  });
+
 });

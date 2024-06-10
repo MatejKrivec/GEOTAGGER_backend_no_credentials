@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+/*import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { map } from 'rxjs/operators';
 
@@ -18,4 +18,4 @@ export class GeocodeService {
 
     return response.data;
   }
-}
+}*/

@@ -9,7 +9,6 @@ import { OAuthModule } from './OAuthGoogle/OAuth.module';
 import { LocationModule } from './LOCATION/location.module';
 import { GuessModule } from './GUESS/guess.module';
 import { UserActivityModule } from './UserActivity/userActivity.module';
-import { GeocodeModule } from './GEOCODE/geocode.module';
 
 
 
@@ -23,7 +22,6 @@ import { GeocodeModule } from './GEOCODE/geocode.module';
     LocationModule,
     GuessModule,
     UserActivityModule,
-    GeocodeModule
   ],
   controllers: [AppController],
   providers: [AppService],

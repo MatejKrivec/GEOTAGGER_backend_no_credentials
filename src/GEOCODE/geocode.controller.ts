@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+/*import { Controller, Get, Query } from '@nestjs/common';
 import { GeocodeService } from './geocode.service';
 
 @Controller('geocode')
@@ -9,4 +9,4 @@ export class GeocodeController {
   async geocode(@Query('address') address: string) {
     return this.geocodeService.geocode(address);
   }
-}
+}*/

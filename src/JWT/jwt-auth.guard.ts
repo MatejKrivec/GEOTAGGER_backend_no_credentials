@@ -18,14 +18,8 @@ export class JwtAuthGuard implements CanActivate {
     if (!token) {
       throw new UnauthorizedException('Authorization token not found');
     }
-
-    
-
     try {
-        
-        //console.log('token: ' + token)
       const decodedToken = jwt.verify(token, this.jwtSecret);
-      // If token is valid, grant access
       return true;
     } catch (error) {
       throw new UnauthorizedException('Invalid token');

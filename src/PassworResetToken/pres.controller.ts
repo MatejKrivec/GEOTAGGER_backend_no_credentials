@@ -21,7 +21,7 @@ export class PasswordResetController {
       return await this.passwordResetService.requestPasswordReset(email);
     }
 
-     @Post('/validate-token')
+    @Post('/validate-token')
     @ApiBody({ type: TokenDto })
     async validateToken(@Body() body: { token: string; newPassword: string }): Promise<{ userId: string }> {
         const token = body.token;
@@ -30,7 +30,6 @@ export class PasswordResetController {
         const { userId } = await this.passwordResetService.validateToken(token);
 
         if (userId) {
-            // Update the password using the newPassword parameter
             const id = parseInt(userId);
             await this.userService.updatePassword(id, newPassword);
         }

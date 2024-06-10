@@ -17,10 +17,10 @@ export class GuessController {
     return this.guessService.create(data);
   }
 
-  @Get()
+  /*@Get()
   findAll(): Promise<Guess[]> {
     return this.guessService.findAll();
-  }
+  }*/
 
   @Get(':id')
   findOne(@Param('id') id: string): Promise<Guess> {
