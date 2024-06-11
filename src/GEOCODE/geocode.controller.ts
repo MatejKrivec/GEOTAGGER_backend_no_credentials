@@ -5,7 +5,7 @@ import { GeocodeService } from './geocode.service';
 export class GeocodeController {
   constructor(private readonly geocodeService: GeocodeService) {}
 
-  @Get('api-key')
+  @Get('address')
   async geocode(@Query('address') address: string) {
     return this.geocodeService.geocode(address);
   }

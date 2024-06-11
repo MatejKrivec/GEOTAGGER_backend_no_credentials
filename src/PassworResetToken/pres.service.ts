@@ -43,7 +43,7 @@ export class PasswordResetService {
   async create(createPasswordResetTokenDto: CreatePasswordResetTokenDto): Promise<void> {
     const { userId } = createPasswordResetTokenDto;
     const expiryTime = new Date(Date.now() + 30 * 60 * 1000); 
-    const token = '123456';   //TUKAJ BI BIL NEKI RANDOM GENERATED NUMBER
+    const token = process.env.PASSWORD_RESET_TOKEN_SECRET_KEY;  
     await this.prisma.passwordResetToken.create({
       data: {
         userId,
