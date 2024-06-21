@@ -9,6 +9,7 @@ import { OAuthModule } from './OAuthGoogle/OAuth.module';
 import { LocationModule } from './LOCATION/location.module';
 import { GuessModule } from './GUESS/guess.module';
 import { UserActivityModule } from './UserActivity/userActivity.module';
+import { PrismaModule } from './PRISMA/prisma.module';
 
 
 
@@ -23,6 +24,7 @@ import { UserActivityModule } from './UserActivity/userActivity.module';
     LocationModule,
     GuessModule,
     UserActivityModule,
+    PrismaModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -23,13 +23,13 @@ export class UserController {
     @UseGuards(JwtAuthGuard) 
     async getUser(@Param('id') ID: string): Promise<USER> {
         const id = parseInt(ID, 10);
-        return this.userService.getUserById(id);
+        return this.userService.getUserById(id); 
     }
 
-  /*  @Get()
+    @Get()
         async getAllUsers(): Promise<USER[]> {
         return this.userService.getAllUsers();
-    }*/
+    }
 
     @Post('validatePassword/:id')
     @UseGuards(JwtAuthGuard) 

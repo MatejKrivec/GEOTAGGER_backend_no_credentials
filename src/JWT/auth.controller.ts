@@ -1,11 +1,10 @@
 // your-controller.ts
-import { Controller, Get, Post, Req, Request, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { Controller, Get, Post, Req, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { ApiBody, ApiCreatedResponse, ApiProperty, ApiTags } from '@nestjs/swagger';
 import { LoginDto } from './login.dto';
 import { JwtPayload } from 'jsonwebtoken';
-import { JwtService } from '@nestjs/jwt';
+
 
 @ApiTags('JWT')
 @Controller('auth')

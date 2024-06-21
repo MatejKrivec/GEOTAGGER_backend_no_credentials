@@ -1,10 +1,10 @@
 // auth.service.ts
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { PrismaService } from '../Prisma/prisma.service';
-import { Prisma, USER } from '@prisma/client';
-import { UserService } from 'src/User/user.service';
-//import { UserService } from 'src/User/user.service';
+import { PrismaService } from '../PRISMA/prisma.service';
+import { USER } from '@prisma/client';
+import { PrismaModule } from 'src/PRISMA/prisma.module';
+
 import * as jwt from 'jsonwebtoken';
 import { PasswordService } from '../USER/password.service';
 

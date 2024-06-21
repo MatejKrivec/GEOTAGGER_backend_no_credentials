@@ -4,11 +4,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 import { AuthController } from './auth.controller';
-import { PrismaService } from 'src/Prisma/prisma.service';
+import { PrismaModule } from 'src/PRISMA/prisma.module';
+import { PrismaService } from '../PRISMA/prisma.service';
+
 import { DecodeController } from './decode.controller';
-import { PasswordService } from 'src/USER/password.service';
+import { PasswordService } from '../USER/password.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
-import { JwtService } from '@nestjs/jwt';
+
 
 
 @Module({
