@@ -1,0 +1,11 @@
+service: geotagger-backend
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: eu-north-1
+functions:
+  app:
+    handler: dist/main
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}' 
