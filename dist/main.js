@@ -13,9 +13,10 @@ async function bootstrap() {
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api', app, document);
     app.enableCors({
-        origin: 'http://geotagger-frontend-deploy.s3-website.eu-north-1.amazonaws.com'
+        origin: 'https://geotagger-dpsnsyhip-matej-krivecs-projects.vercel.app'
     });
     await app.listen(process.env.PORT || 3000, '0.0.0.0');
 }
 bootstrap();
+exports.default = bootstrap;
 //# sourceMappingURL=main.js.map
