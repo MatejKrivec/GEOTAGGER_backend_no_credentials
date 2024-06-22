@@ -16,7 +16,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   app.enableCors({
-    origin: 'http://geotagger-frontend-deploy.s3-website.eu-north-1.amazonaws.com'
+    origin: 'https://geotagger-frontend-r1h7ucbx9-matej-krivecs-projects.vercel.app'
   })
 
   await app.listen(process.env.PORT || 3000, '0.0.0.0');
