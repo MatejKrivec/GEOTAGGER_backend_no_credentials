@@ -12,7 +12,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     super({
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET_KEY,
-      callbackURL: 'http://localhost:3000/Oauth/google/callback',
+      callbackURL: 'https://geotagger.adaptable.app/Oauth/google/callback',
       scope: ['email', 'profile'],
     });
   }

@@ -43,7 +43,7 @@ describe('OAuthController', () => {
       jest.spyOn(oauthService, 'generateToken').mockImplementation(() => Promise.resolve('token'));
 
       await oauthController.googleLoginCallback(req, res);
-      expect(res.redirect).toHaveBeenCalledWith('http://localhost:5173/Signin?token=token');
+      expect(res.redirect).toHaveBeenCalledWith('https://geotagger-7ksdmj90b-matej-krivecs-projects.vercel.app/Signin?token=token');
     });
   });
 });
