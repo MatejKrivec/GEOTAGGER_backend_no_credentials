@@ -21,6 +21,6 @@ export class OAuthController {
 
     const token = await this.authService.generateToken({ sud: req.user.id, aud: req.user.username, });
   
-    res.redirect(`http://localhost:5173/Signin?token=${token}`);
+    res.redirect(`https://geotagger-7ksdmj90b-matej-krivecs-projects.vercel.app/Signin?token=${token}`);
   }
 }
