@@ -19,7 +19,7 @@ async function bootstrap() {
     origin: 'https://geotagger-7ksdmj90b-matej-krivecs-projects.vercel.app'
   })
 
-  await app.listen(process.env.PORT || 3000, '0.0.0.0');
+  await app.listen( 3000, '0.0.0.0');
 }
 bootstrap();
 

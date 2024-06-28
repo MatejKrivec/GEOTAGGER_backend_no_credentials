@@ -11,7 +11,7 @@ import { PasswordService } from '../USER/password.service';
 @Injectable()
 export class AuthService {
 
-  private readonly jwtSecret = process.env.JWT_TOKEN_SECRET_KEY;
+  private readonly jwtSecret = "xxxx";
 
   verifyToken(token: string) {
     try {

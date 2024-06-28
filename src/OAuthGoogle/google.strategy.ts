@@ -10,8 +10,8 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     private readonly prisma: PrismaService,
   ) {
     super({
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET_KEY,
+      clientID: "xxxx",
+      clientSecret: "xxxx",
       callbackURL: 'https://geotagger.adaptable.app/Oauth/google/callback',
       scope: ['email', 'profile'],
     });

@@ -7,7 +7,7 @@ import * as jwt from 'jsonwebtoken';
 export class JwtAuthGuard implements CanActivate {
   constructor(private readonly jwtService: JwtService) {}
 
-  private readonly jwtSecret = process.env.JWT_TOKEN_SECRET_KEY;
+  private readonly jwtSecret = "xxxx";
 
   canActivate(
     context: ExecutionContext,
